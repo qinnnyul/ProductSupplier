@@ -1,7 +1,7 @@
 package com.thoughtworks.trains.service.impl;
 
+import com.thoughtworks.trains.domain.Condition;
 import com.thoughtworks.trains.domain.Counter;
-import com.thoughtworks.trains.domain.DistancesCondition;
 import com.thoughtworks.trains.domain.Graph;
 import com.thoughtworks.trains.domain.Route;
 import com.thoughtworks.trains.domain.Station;
@@ -10,78 +10,45 @@ import com.thoughtworks.trains.service.RouteCalculatorService;
 
 import java.util.List;
 
-import static com.thoughtworks.trains.config.Constant.ONE;
 import static com.thoughtworks.trains.config.Constant.ZERO;
 
-public class NumberOfRouteCalculatorService extends RouteCalculatorService
+public abstract class NumberOfRouteCalculatorService extends RouteCalculatorService
 {
-    private DistancesCondition distancesCondition;
+    private Condition condition;
 
-    private StopsCondition stopsCondition;
-
-    public NumberOfRouteCalculatorService(Graph graph)
+    protected NumberOfRouteCalculatorService(Graph graph, Condition condition)
     {
         super(graph);
+        this.condition = condition;
     }
-
-    public NumberOfRouteCalculatorService withDistanceCondition(DistancesCondition distancesCondition)
-    {
-        this.distancesCondition = distancesCondition;
-        return this;
-    }
-
-    public NumberOfRouteCalculatorService withStopsCondition(StopsCondition stopsCondition)
-    {
-        this.stopsCondition = stopsCondition;
-        return this;
-    }
-
 
     @Override
     public int calculate(Route route)
     {
         Counter counter = new Counter();
-
-        if (stopsCondition != null) {
-            countTripsWithStops(route.getSource(), route.getTarget(), ZERO, counter);
-        }
-
-        if (distancesCondition != null) {
-            countTripsWithDistance(route.getSource(), route.getTarget(), ZERO, counter);
-        }
-
+        countNumberOfRoute(route.getSource(), route.getTarget(), ZERO, counter);
         return counter.getTripCount();
     }
 
-    private void countTripsWithDistance(Station source, Station target, int distance, Counter counter)
+    private void countNumberOfRoute(Station source, Station target, int temp, Counter counter)
     {
         List<Station> nearStations = graph.findNearStations(source);
 
         for (Station station : nearStations) {
-            int current = distance + graph.getDistanceOf(source, station);
-            if (target == station && distancesCondition.check(current)) {
+            int current = getCurrentValue(source, station, temp);
+            if (target == station && condition.check(current)) {
                 counter.incrementForTripCounter();
-            } else if (current > distancesCondition.getValue()) {
+                if (condition instanceof StopsCondition) {
+                    return;
+                }
+            } else if (current > condition.getValue()) {
                 return;
             }
-            countTripsWithDistance(station, target, current, counter);
+            countNumberOfRoute(station, target, current, counter);
         }
+
     }
 
-    private void countTripsWithStops(Station source, Station target, int stop, Counter counter)
-    {
-        List<Station> nearStations = graph.findNearStations(source);
-
-        for (Station station : nearStations) {
-            int current = stop + ONE;
-            if (target == station && stopsCondition.check(current)) {
-                counter.incrementForTripCounter();
-                return;
-            } else if (current > stopsCondition.getValue()) {
-                return;
-            }
-            countTripsWithStops(station, target, current, counter);
-        }
-    }
+    public abstract int getCurrentValue(Station source, Station target, int temp);
 
 }

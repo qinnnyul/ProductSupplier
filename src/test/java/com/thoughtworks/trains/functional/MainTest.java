@@ -12,7 +12,8 @@ import com.thoughtworks.trains.service.RouteCalculatorService;
 import com.thoughtworks.trains.service.impl.DataInputServiceImpl;
 import com.thoughtworks.trains.service.impl.DistanceOfRouteCalculatorService;
 import com.thoughtworks.trains.service.impl.DistanceOfShortestRouteCalculatorService;
-import com.thoughtworks.trains.service.impl.NumberOfRouteCalculatorService;
+import com.thoughtworks.trains.service.impl.NumberOfRouteWithDistancesCalculatorService;
+import com.thoughtworks.trains.service.impl.NumberOfRouteWithStopsCalculatorService;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -119,7 +120,7 @@ public class MainTest
         target = StationFactory.build(C);
         route = new Route(source, target);
 
-        routeCalculatorService = new NumberOfRouteCalculatorService(graph).withStopsCondition(new StopsCondition(LESSER_OR_EQUAL, 3));
+        routeCalculatorService = new NumberOfRouteWithStopsCalculatorService(graph, new StopsCondition(LESSER_OR_EQUAL, 3));
 
         System.out.println(String.format("#6:%s", routeCalculatorService.calculate(route)));
 
@@ -133,7 +134,7 @@ public class MainTest
         target = StationFactory.build(C);
         route = new Route(source, target);
 
-        routeCalculatorService = new NumberOfRouteCalculatorService(graph).withStopsCondition(new StopsCondition(EQUALS, 4));
+        routeCalculatorService = new NumberOfRouteWithStopsCalculatorService(graph, new StopsCondition(EQUALS, 4));
 
         System.out.println(String.format("#7:%s", routeCalculatorService.calculate(route)));
 
@@ -171,7 +172,7 @@ public class MainTest
         target = StationFactory.build(C);
         route = new Route(source, target);
 
-        routeCalculatorService = new NumberOfRouteCalculatorService(graph).withDistanceCondition(new DistancesCondition(LESSTHAN, 30));
+        routeCalculatorService = new NumberOfRouteWithDistancesCalculatorService(graph, new DistancesCondition(LESSTHAN, 30));
 
         System.out.println(String.format("#10:%s", routeCalculatorService.calculate(route)));
 

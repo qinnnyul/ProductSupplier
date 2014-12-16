@@ -1,19 +1,43 @@
-一小队机器人探测器将由NASA送上火星高原，探测器将在这个奇特的矩形高原上行驶。 用它们携带的照相机将周围的全景地势图发回到地球。每个探测器的方向和位置将由一个x,y系坐标图和一个表示地理方向的字母表示出来。为了方便导航，平原将被划分为网格状。位置坐标示例：0，0，N，表示探测器在坐标图的左下角，且面朝北方。为控制探测器，NASA会传送一串简单的字母。可能传送的字母为： 'L ', 'R '和 'M '。 'L ',和 'R '分别表示使探测器向左、向右旋转90度，但不离开他所在地点。 'M ' 表示向前开进一个网格的距离，且保持方向不变。假设以广场（高原）的直北方向为y轴的指向。
+The purpose of this problem is to help the railroad provide its customers with information about the
+routes. In particular, you will compute the distance along a certain route, the number of different
+routes between two towns, and the shortest route between two towns.
+Input: A directed graph where a node represents a town and an edge represents a route between two
+towns. The weighting of the edge represents the distance between the two towns. A given route will
+never appear more than once, and for a given route, the starting and ending town will not be the same
+town.
+Output: For test input 1 through 5, if no such route exists, output 'NO SUCH ROUTE'. Otherwise, follow
+the route as given; do not make any extra stops! For example, the first problem means to start at city A,
+then travel directly to city B (a distance of 5), then directly to city C (a distance of 4).
 
-输入：首先输入的line是坐标图的右上方，假定左下方顶点的坐标为0，0。剩下的要输入的是被分布好的探测器的信息。每个探测器需要输入wo lines。第一条line 提供探测器的位置，第二条是关于这个探测器怎样进行高原探测的一系列说明。位置是由两个整数和一个区分方向的字母组成，对应了探测器的（x,y）坐标和方向。每个探测器的移动将按序完成，即后一个探测器不能在前一个探测器完成移动之前开始移动。
+1. The distance of the route A-B-C.
+2. The distance of the route A-D.
+3. The distance of the route A-D-C.
+4. The distance of the route A-E-B-C-D.
+5. The distance of the route A-E-D.
+6. The number of trips starting at C and ending at C with a maximum of 3 stops. In the sample data
+below, there are two such trips: C-D-C (2 stops). and C-E-B-C (3 stops).
+7. The number of trips starting at A and ending at C with exactly 4 stops. In the sample data below,
+there are three such trips: A to C (via B,C,D); A to C (via D,C,D); and A to C (via D,E,B).
+8. The length of the shortest route (in terms of distance to travel) from A to C.
+9. The length of the shortest route (in terms of distance to travel) from B to B.
+10.The number of different routes from C to C with a distance of less than 30. In the sample data, the
+trips are: CDC, CEBC, CEBCDC, CDCEBC, CDEBC, CEBCEBC, CEBCEBCEBC.
 
-输出：每个探测器的输出应该为它行进到的最终位置坐标和方向。输入和输出 测试如下：
-
-期待的输入:
-
-5 5
-1 2 N
-LMLMLMLMM
-3 3 E
-MMRMMRMRRM
 
 
-期待的输出:
 
-1 3 N
-5 1 E
+Test Input:
+For the test input, the towns are named using the first few letters of the alphabet from A to D. A route
+between two towns (A to B) with a distance of 5 is represented as AB5.
+Graph: AB5, BC4, CD8, DC8, DE6, AD5, CE2, EB3, AE7
+Expected Output:
+Output #1: 9
+Output #2: 5
+Output #3: 13
+Output #4: 22
+Output #5: NO SUCH ROUTE
+Output #6: 2
+Output #7: 3
+Output #8: 9
+Output #9: 9
+Output #10: 7

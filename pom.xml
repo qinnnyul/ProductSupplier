@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.qinnnyul</groupId>
-    <artifactId>mar-rovers</artifactId>
+    <artifactId>trains</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>mar-rovers</name>
+    <name>trains</name>
     <url>http://maven.apache.org</url>
 
     <properties>

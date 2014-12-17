@@ -55,7 +55,7 @@ public class MainTest
         source = StationFactory.build(A);
         target = StationFactory.build(C);
         route = new Route(source, target);
-        route.setDetails(Arrays.asList(source, StationFactory.build(B), target));
+        route.setStations(Arrays.asList(source, StationFactory.build(B), target));
 
         routeCalculatorService = new DistanceOfRouteCalculatorService(graph);
 
@@ -67,7 +67,7 @@ public class MainTest
         source = StationFactory.build(A);
         target = StationFactory.build(D);
         route = new Route(source, target);
-        route.setDetails(Arrays.asList(source, target));
+        route.setStations(Arrays.asList(source, target));
 
         System.out.println(String.format("#2:%s", routeCalculatorService.calculate(route)));
 
@@ -78,7 +78,7 @@ public class MainTest
         source = StationFactory.build(A);
         target = StationFactory.build(C);
         route = new Route(source, target);
-        route.setDetails(Arrays.asList(source, StationFactory.build(D), target));
+        route.setStations(Arrays.asList(source, StationFactory.build(D), target));
 
         System.out.println(String.format("#3:%s", routeCalculatorService.calculate(route)));
 
@@ -89,7 +89,7 @@ public class MainTest
         source = StationFactory.build(A);
         target = StationFactory.build(D);
         route = new Route(source, target);
-        route.setDetails(Arrays.asList(source, StationFactory.build(E), StationFactory.build(B), StationFactory.build(C), target));
+        route.setStations(Arrays.asList(source, StationFactory.build(E), StationFactory.build(B), StationFactory.build(C), target));
 
         System.out.println(String.format("#4:%s", routeCalculatorService.calculate(route)));
 
@@ -100,7 +100,7 @@ public class MainTest
         source = StationFactory.build(A);
         target = StationFactory.build(D);
         route = new Route(source, target);
-        route.setDetails(Arrays.asList(source, StationFactory.build(E), target));
+        route.setStations(Arrays.asList(source, StationFactory.build(E), target));
 
         String message = "";
         try {

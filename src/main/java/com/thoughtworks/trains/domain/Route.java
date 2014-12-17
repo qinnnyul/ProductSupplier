@@ -7,7 +7,7 @@ public class Route
     private final Station source;
     private final Station target;
 
-    private List<Station> details;
+    private List<Station> stations;
 
     public Route(Station source, Station target)
     {
@@ -26,13 +26,13 @@ public class Route
         return target;
     }
 
-    public List<Station> getDetails()
+    public List<Station> getStations()
     {
-        return details;
+        return stations;
     }
 
-    public void setDetails(List<Station> details)
+    public void setStations(List<Station> stations)
     {
-        this.details = details;
+        this.stations = stations;
     }
 }

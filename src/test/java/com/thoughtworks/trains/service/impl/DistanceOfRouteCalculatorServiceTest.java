@@ -37,7 +37,7 @@ public class DistanceOfRouteCalculatorServiceTest
         Station end = StationFactory.build(D);
         Station[] stations = {start, new Station(E), new Station(B), new Station(C), end};
         Route route = new Route(start, end);
-        route.setDetails(Arrays.asList(stations));
+        route.setStations(Arrays.asList(stations));
         // when
         Integer distance = routeCalculatorService.calculate(route);
         // then

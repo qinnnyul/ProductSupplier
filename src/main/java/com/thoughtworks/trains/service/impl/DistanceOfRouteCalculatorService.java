@@ -14,6 +14,6 @@ public class DistanceOfRouteCalculatorService extends RouteCalculatorService
     @Override
     public int calculate(Route route)
     {
-        return graph.getDistanceOfRoute(route.getDetails());
+        return graph.getDistanceOfRoute(route.getStations());
     }
 }

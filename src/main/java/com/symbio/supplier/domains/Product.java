@@ -54,10 +54,10 @@ public class Product
 
     private void checkValidTimeWindow(CombinedMaterials combinedMaterials)
     {
-        Date beginingDate = DateUtils.strToDate(calculateBeginningDate(combinedMaterials));
+        Date startDate = DateUtils.strToDate(calculateBeginningDate(combinedMaterials));
         Date endDate = DateUtils.strToDate(calculateEndDate(combinedMaterials));
 
-        if(beginingDate.after(endDate)){
+        if(startDate.after(endDate)){
             throw new InvalidTimeWindowException();
         }
     }

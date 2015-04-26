@@ -24,7 +24,7 @@ public class Product
         this.materials = materials;
     }
 
-    public String calculateBeginningDate(CombinedMaterials combinedMaterials)
+    public String calculateStartDate(CombinedMaterials combinedMaterials)
     {
 
         Collections.sort(combinedMaterials.getMaterialSupplyDetails(), new StartDateComparator());
@@ -54,7 +54,7 @@ public class Product
 
     private void checkValidTimeWindow(CombinedMaterials combinedMaterials)
     {
-        Date startDate = DateUtils.strToDate(calculateBeginningDate(combinedMaterials));
+        Date startDate = DateUtils.strToDate(calculateStartDate(combinedMaterials));
         Date endDate = DateUtils.strToDate(calculateEndDate(combinedMaterials));
 
         if(startDate.after(endDate)){

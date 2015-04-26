@@ -43,7 +43,7 @@ public class ProductTest
         // given
         List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
         // when
-        String result = product98100201.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
+        String result = product98100201.calculateStartDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-01 00:00:00"));
     }
@@ -77,7 +77,7 @@ public class ProductTest
         // given
         List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
         // when
-        String result = product98100201.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
+        String result = product98100201.calculateStartDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2015-01-01 00:00:00"));
     }
@@ -125,7 +125,7 @@ public class ProductTest
         List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
                 (RAW_ROSE_005_ONE).add(CAPACITY).build());
         // when
-        String result = product98102601.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
+        String result = product98102601.calculateStartDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-01 00:00:00"));
     }

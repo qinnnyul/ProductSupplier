@@ -30,7 +30,7 @@ public class ProductServiceImpl implements ProductService
     private void addProductSupplyInfoIntoList(List<ProductSupplyInfo> productSupplyInfos, CombinedMaterials possibleCombinationOfMaterials)
     {
         try {
-            productSupplyInfos.add(new ProductSupplyInfo(product.getName(), product.calculateBeginningDate(possibleCombinationOfMaterials),
+            productSupplyInfos.add(new ProductSupplyInfo(product.getName(), product.calculateStartDate(possibleCombinationOfMaterials),
                     product.calculateEndDate(possibleCombinationOfMaterials), product.calculateSupplyAmount(possibleCombinationOfMaterials)));
         } catch (Exception e) {
             //TODO: will use logger and this exception will also been handled by global handler in future

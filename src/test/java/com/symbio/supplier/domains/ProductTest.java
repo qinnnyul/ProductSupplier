@@ -15,10 +15,9 @@ import static org.hamcrest.core.Is.is;
 
 public class ProductTest
 {
-    private Product product98100201;
+    protected Product product98100201;
 
-    private Product product98102601;
-
+    protected Product product98102601;
 
     @Before
     public void setUp() throws Exception

@@ -1,6 +1,6 @@
 package com.symbio.supplier.domains;
 
-import com.symbio.supplier.comparators.BeginningDateComparator;
+import com.symbio.supplier.comparators.StartDateComparator;
 import com.symbio.supplier.comparators.EndDateComparator;
 import com.symbio.supplier.utils.DateUtils;
 import com.symbio.supplier.exceptions.InvalidTimeWindowException;
@@ -27,7 +27,7 @@ public class Product
     public String calculateBeginningDate(CombinedMaterials combinedMaterials)
     {
 
-        Collections.sort(combinedMaterials.getMaterialSupplyDetails(), new BeginningDateComparator());
+        Collections.sort(combinedMaterials.getMaterialSupplyDetails(), new StartDateComparator());
         return combinedMaterials.getMaterialSupplyDetails().get(0).getStartDate();
     }
 

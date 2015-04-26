@@ -6,7 +6,7 @@ import java.util.Date;
 
 import static com.symbio.supplier.utils.DateUtils.strToDate;
 
-public class BeginningDateComparator implements java.util.Comparator<MaterialSupplyDetail>
+public class StartDateComparator implements java.util.Comparator<MaterialSupplyDetail>
 {
     @Override
     public int compare(MaterialSupplyDetail materialSupplyDetail1, MaterialSupplyDetail materialSupplyDetail2)

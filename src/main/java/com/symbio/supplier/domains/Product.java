@@ -26,7 +26,6 @@ public class Product
 
     public String calculateStartDate(CombinedMaterials combinedMaterials)
     {
-
         Collections.sort(combinedMaterials.getMaterialSupplyDetails(), new StartDateComparator());
         return combinedMaterials.getMaterialSupplyDetails().get(0).getStartDate();
     }

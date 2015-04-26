@@ -6,24 +6,24 @@ import java.util.List;
 
 public class CombinedMaterials
 {
-    private List<MaterialDetail> materialDetails;
+    private List<MaterialSupplyDetail> materialSupplyDetails;
 
-    public CombinedMaterials(List<MaterialDetail> materialDetails)
+    public CombinedMaterials(List<MaterialSupplyDetail> materialSupplyDetails)
     {
-        this.materialDetails = materialDetails;
+        this.materialSupplyDetails = materialSupplyDetails;
     }
 
-    public CombinedMaterials add(MaterialDetail materialDetail)
+    public CombinedMaterials add(MaterialSupplyDetail materialSupplyDetail)
     {
-        materialDetails.add(materialDetail);
+        materialSupplyDetails.add(materialSupplyDetail);
         return this;
     }
 
-    public List<MaterialDetail> getMaterialDetails()
+    public List<MaterialSupplyDetail> getMaterialSupplyDetails()
     {
-        if (materialDetails == null || materialDetails.size() == 0){
+        if (materialSupplyDetails == null || materialSupplyDetails.size() == 0){
             throw new IllegalCombinatedMaterialsException();
         }
-        return materialDetails;
+        return materialSupplyDetails;
     }
 }

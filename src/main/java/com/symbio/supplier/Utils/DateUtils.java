@@ -1,4 +1,6 @@
-package com.symbio.supplier.Utils;
+package com.symbio.supplier.utils;
+
+import com.symbio.supplier.exceptions.UnparseableStringToDateException;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -13,8 +15,7 @@ public class DateUtils
         try {
             return df.parse(dateString);
         } catch (ParseException e) {
-            e.printStackTrace();
+            throw new UnparseableStringToDateException();
         }
-        return null;
     }
 }

@@ -16,10 +16,10 @@ public class MaterialTest
         // given
         Material material = new Material(RAW_ROSE_005, 14);
         // when
-        List<MaterialDetail> materialDetails = material.getMaterialDetails();
+        List<MaterialSupplyDetail> materialSupplyDetails = material.getMaterialSupplyDetails();
 
         // then
-        assertThat(materialDetails.size(), is(2));
+        assertThat(materialSupplyDetails.size(), is(2));
     }
 
 
@@ -29,10 +29,10 @@ public class MaterialTest
         // given
         Material material = new Material(RAW_EUCALYPTUS_001, 14);
         // when
-        List<MaterialDetail> materialDetails = material.getMaterialDetails();
+        List<MaterialSupplyDetail> materialSupplyDetails = material.getMaterialSupplyDetails();
 
         // then
-        assertThat(materialDetails.size(), is(2));
+        assertThat(materialSupplyDetails.size(), is(2));
     }
 
     @Test
@@ -41,10 +41,10 @@ public class MaterialTest
         // given
         Material material = new Material(CAPACITY, 14);
         // when
-        List<MaterialDetail> materialDetails = material.getMaterialDetails();
+        List<MaterialSupplyDetail> materialSupplyDetails = material.getMaterialSupplyDetails();
 
         // then
-        assertThat(materialDetails.size(), is(1));
+        assertThat(materialSupplyDetails.size(), is(1));
     }
 
     @Test

@@ -1,18 +1,18 @@
 package com.symbio.supplier.comparators;
 
-import com.symbio.supplier.Domain.MaterialDetail;
+import com.symbio.supplier.domains.MaterialSupplyDetail;
 
 import java.util.Date;
 
-import static com.symbio.supplier.Utils.DateUtils.strToDate;
+import static com.symbio.supplier.utils.DateUtils.strToDate;
 
-public class EndDateComparator implements java.util.Comparator<MaterialDetail>
+public class EndDateComparator implements java.util.Comparator<MaterialSupplyDetail>
 {
     @Override
-    public int compare(MaterialDetail materialDetail1, MaterialDetail materialDetail2)
+    public int compare(MaterialSupplyDetail materialSupplyDetail1, MaterialSupplyDetail materialSupplyDetail2)
     {
-        Date date1 = strToDate(materialDetail1.getEndDate());
-        Date date2 = strToDate(materialDetail2.getEndDate());
+        Date date1 = strToDate(materialSupplyDetail1.getEndDate());
+        Date date2 = strToDate(materialSupplyDetail2.getEndDate());
 
         if (date1.after(date2)) {
             return 1;

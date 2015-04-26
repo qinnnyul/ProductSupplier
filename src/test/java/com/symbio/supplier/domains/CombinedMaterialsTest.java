@@ -11,9 +11,9 @@ public class CombinedMaterialsTest
     public void should_throw_exception_when_inputed_combinated_materials_is_empty() throws Exception
     {
         // given
-        CombinedMaterials combinedMaterials = new CombinedMaterials(new ArrayList<MaterialDetail>());
+        CombinedMaterials combinedMaterials = new CombinedMaterials(new ArrayList<MaterialSupplyDetail>());
         // when
-        combinedMaterials.getMaterialDetails();
+        combinedMaterials.getMaterialSupplyDetails();
     }
 
     @Test(expected = IllegalCombinatedMaterialsException.class)
@@ -22,6 +22,6 @@ public class CombinedMaterialsTest
         // given
         CombinedMaterials combinedMaterials = new CombinedMaterials(null);
         // when
-        combinedMaterials.getMaterialDetails();
+        combinedMaterials.getMaterialSupplyDetails();
     }
 }

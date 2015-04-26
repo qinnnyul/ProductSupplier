@@ -2,13 +2,14 @@ package com.symbio.supplier.domains;
 
 import com.google.common.collect.ImmutableList;
 import com.symbio.supplier.exceptions.InvalidTimeWindowException;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.List;
 
 import static com.google.common.collect.Lists.newArrayList;
-import static com.symbio.supplier.domains.MaterialDetail.*;
+import static com.symbio.supplier.domains.MaterialSupplyDetail.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -41,9 +42,9 @@ public class ProductTest
     public void should_caculate_beginning_supply_date_for_98100201_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
         // when
-        String result = product98100201.caculateBeginningDate(materialDetails);
+        String result = product98100201.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-01 00:00:00"));
     }
@@ -53,9 +54,9 @@ public class ProductTest
     public void should_caculate_end_supply_date_for_98100201_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
         // when
-        String result = product98100201.caculateEndDate(materialDetails);
+        String result = product98100201.calculateEndDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-31 00:00:00"));
     }
@@ -64,9 +65,9 @@ public class ProductTest
     public void should_caculate_supply_amount_for_98100201_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_ONE).build());
         // when
-        int amount = product98100201.caculateSupplyAmount(materialDetails);
+        int amount = product98100201.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(amount, is(1));
     }
@@ -75,9 +76,9 @@ public class ProductTest
     public void should_caculate_beginning_supply_date_for_98100201_case_two() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
         // when
-        String result = product98100201.caculateBeginningDate(materialDetails);
+        String result = product98100201.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2015-01-01 00:00:00"));
     }
@@ -87,9 +88,9 @@ public class ProductTest
     public void should_caculate_end_supply_date_for_98100201_case_two() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
         // when
-        String result = product98100201.caculateEndDate(materialDetails);
+        String result = product98100201.calculateEndDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2015-01-15 00:00:00"));
     }
@@ -98,9 +99,9 @@ public class ProductTest
     public void should_caculate_supply_amount_for_98100201_case_two() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(CAPACITY).add(RAW_ROSE_005_TWO).build());
         // when
-        int amount = product98100201.caculateSupplyAmount(materialDetails);
+        int amount = product98100201.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(amount, is(47));
     }
@@ -110,9 +111,9 @@ public class ProductTest
     public void should_caculate_supply_amount_for_98102601_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add(RAW_ROSE_005_ONE).add(CAPACITY).build());
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add(RAW_ROSE_005_ONE).add(CAPACITY).build());
         // when
-        int amount = product98102601.caculateSupplyAmount(materialDetails);
+        int amount = product98102601.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(amount, is(1));
     }
@@ -122,10 +123,10 @@ public class ProductTest
     public void should_caculate_beginning_date_for_98102601_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
                 (RAW_ROSE_005_ONE).add(CAPACITY).build());
         // when
-        String result = product98102601.caculateBeginningDate(materialDetails);
+        String result = product98102601.calculateBeginningDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-01 00:00:00"));
     }
@@ -135,10 +136,10 @@ public class ProductTest
     public void should_caculate_end_date_for_98102601_case_one() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
                 (RAW_ROSE_005_ONE).add(CAPACITY).build());
         // when
-        String result = product98102601.caculateEndDate(materialDetails);
+        String result = product98102601.calculateEndDate(new CombinedMaterials(materialSupplyDetails));
         // then
         assertThat(result, is("2014-10-31 00:00:00"));
     }
@@ -148,10 +149,10 @@ public class ProductTest
     public void should_caculate_supply_amount_for_98102601_case_two() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add
                 (RAW_ROSE_005_TWO).add(CAPACITY).build());
         // when
-        product98102601.caculateSupplyAmount(materialDetails);
+        product98102601.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
     }
 
 
@@ -159,22 +160,40 @@ public class ProductTest
     public void should_caculate_supply_amount_for_98102601_case_three() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_TWO).add
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_TWO).add
                 (RAW_ROSE_005_TWO).add(CAPACITY).build());
         // when
-        product98102601.caculateSupplyAmount(materialDetails);
+        product98102601.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
     }
 
     @Test(expected = InvalidTimeWindowException.class)
     public void should_caculate_supply_amount_for_98102601_case_four() throws Exception
     {
         // given
-        List<MaterialDetail> materialDetails = newArrayList(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_TWO).add
+        List<MaterialSupplyDetail> materialSupplyDetails = newArrayList(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_TWO).add
                 (RAW_ROSE_005_TWO).add(CAPACITY).build());
         // when
-        product98102601.caculateSupplyAmount(materialDetails);
+        product98102601.calculateSupplyAmount(new CombinedMaterials(materialSupplyDetails));
     }
 
+
+    @Test
+    public void should_get_list_of_possible_combination_of_materials_for_98100201() throws Exception
+    {
+        // when
+        List<CombinedMaterials> result = product98100201.getPossibleCombinationOfMaterials();
+        // then
+        Assert.assertThat(result.size(), is(2));
+    }
+
+    @Test
+    public void should_get_list_of_possible_combination_of_materials_for_98102601() throws Exception
+    {
+        // when
+        List<CombinedMaterials> result = product98102601.getPossibleCombinationOfMaterials();
+        // then
+        Assert.assertThat(result.size(), is(4));
+    }
 
 
 

@@ -4,31 +4,31 @@ import com.google.common.collect.ImmutableList;
 
 import java.util.List;
 
-import static com.symbio.supplier.domains.MaterialDetail.*;
+import static com.symbio.supplier.domains.MaterialSupplyDetail.*;
 
 
 public enum MaterialCategory
 {
 
-    RAW_EUCALYPTUS_001(ImmutableList.<MaterialDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add(RAW_EUCALYPTUS_001_TWO).build()),
+    RAW_EUCALYPTUS_001(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_EUCALYPTUS_001_ONE).add(RAW_EUCALYPTUS_001_TWO).build()),
 
-    RAW_ROSE_005(ImmutableList.<MaterialDetail>builder().add(RAW_ROSE_005_ONE).add(RAW_ROSE_005_TWO).build()),
+    RAW_ROSE_005(ImmutableList.<MaterialSupplyDetail>builder().add(RAW_ROSE_005_ONE).add(RAW_ROSE_005_TWO).build()),
 
-    CAPACITY(ImmutableList.<MaterialDetail>builder().add(MaterialDetail.CAPACITY).build());
+    CAPACITY(ImmutableList.<MaterialSupplyDetail>builder().add(MaterialSupplyDetail.CAPACITY).build());
 
-    private List<MaterialDetail> materialDetails;
+    private List<MaterialSupplyDetail> materialSupplyDetails;
 
-    MaterialCategory(List<MaterialDetail> materialDetails)
+    MaterialCategory(List<MaterialSupplyDetail> materialSupplyDetails)
     {
-        this.materialDetails = materialDetails;
+        this.materialSupplyDetails = materialSupplyDetails;
     }
 
-    public List<MaterialDetail> getMaterialDetails()
+    public List<MaterialSupplyDetail> getMaterialSupplyDetails()
     {
-        return materialDetails;
+        return materialSupplyDetails;
     }
 
-    public boolean hasContains(MaterialDetail materialDetail){
-        return materialDetails.contains(materialDetail);
+    public boolean hasContains(MaterialSupplyDetail materialSupplyDetail){
+        return materialSupplyDetails.contains(materialSupplyDetail);
     }
 }

@@ -14,9 +14,9 @@ public class Material
         this.amount = amount;
     }
 
-    public List<MaterialDetail> getMaterialDetails()
+    public List<MaterialSupplyDetail> getMaterialSupplyDetails()
     {
-        return materialCategory.getMaterialDetails();
+        return materialCategory.getMaterialSupplyDetails();
     }
 
     public int getAmount()
